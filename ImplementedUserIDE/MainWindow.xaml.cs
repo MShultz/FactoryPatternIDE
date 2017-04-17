@@ -25,13 +25,10 @@ namespace ImplementedUserIDE
 		MainGUIWindow mgw = null;
 		public MainWindow()
 		{
-			HTMLElementFactory elementFac = new HTMLElementFactory();
 			ProgramOutputFactory outputFac = new ProgramOutputFactory();
-			mgw = new MainGUIWindow(elementFac, outputFac);
+			mgw = new MainGUIWindow(outputFac);
 			InitializeComponent();
 			this.AddChild(mgw);
-			mgw.AddElement("button", "Hello!", 100, 200, 60, 150);
-			mgw.AddElement("text", "This is text!", 50, 1000, 75, 120);
 			mgw.RunGUI("html");
 		}
 	}

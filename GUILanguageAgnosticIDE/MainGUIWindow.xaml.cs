@@ -22,25 +22,16 @@ namespace GUILanguageAgnosticIDE
     /// </summary>
     public partial class MainGUIWindow : UserControl
     {
-		private List<Element> Elements { get; set; }
-		private ElementFactory GUIElementFactory { get; set; }
-		private OutputFactory FileOutputFactory { get; set; }
-		public MainGUIWindow(ElementFactory elementFactory, OutputFactory outputFactory)
+		public OutputFactory FileOutputFactory { get; set; }
+		public MainGUIWindow(OutputFactory outputFactory)
         {
-			Elements = new List<Element>();
             InitializeComponent();
-			GUIElementFactory = elementFactory;
 			FileOutputFactory = outputFactory;
         }
 
-		public void AddElement(string elementName, string content, int top, int left, int height, int width)
-		{
-			Elements.Add(GUIElementFactory.CreateElement(elementName, content, top, left, height, width));
-		}
-
 		public void RunGUI(string outputType)
 		{
-			Output output = FileOutputFactory.CreateOutput(outputType, Elements);
+			Output output = FileOutputFactory.CreateOutput(outputType);
 			output.CompileFile();
 		}
     }

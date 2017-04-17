@@ -9,6 +9,6 @@ namespace GUILanguageAgnosticIDE.Factories
 {
 	public abstract class OutputFactory
 	{
-		public abstract Output CreateOutput(string outputType, List<Element> elements);
+		public abstract Output CreateOutput(string outputType);
 	}
 }

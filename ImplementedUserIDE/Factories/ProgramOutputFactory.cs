@@ -10,13 +10,13 @@ namespace ImplementedUserIDE.Factories
 {
 	public class ProgramOutputFactory : OutputFactory
 	{
-		public override Output CreateOutput(string outputType, List<Element> elements)
+		public override Output CreateOutput(string outputType)
 		{
 			Output output = null;
 			switch (outputType.ToLower())
 			{
 				case "html":
-					output = new HTMLOutput(elements);
+					output = new HTMLOutput();
 					break;
 				default:
 					throw new ArgumentException("No such output type has been implemented!");

@@ -9,6 +9,6 @@ namespace GUILanguageAgnosticIDE.Factories
 {
 	public abstract class ElementFactory
 	{
-		public abstract Element CreateElement(string elementName, string content, int top, int left, int height, int width);
+		public abstract Element CreateElement(string elementType, string content, int top, int left, int height, int width);
 	}
 }
