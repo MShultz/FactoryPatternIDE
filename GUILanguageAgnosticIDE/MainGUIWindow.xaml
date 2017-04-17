@@ -5,15 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUILanguageAgnosticIDE"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="70*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel x:Name="ControlPanel"
-                    Grid.Column="0">
-            
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Width="300" Background="Gray">
+            <ListBox x:Name="ElementDropDown" Margin="20" Height="620" Background="LightGray"/>
+            <Button Margin="20, 0, 20, 10" Name="Remove" Height="50" Content="Remove" FontSize="30" VerticalAlignment="Center" Foreground="Red"/>
+            <Button Margin ="20, 10" Name="Compile" Height="50" Content="Compile" FontSize="30" Foreground="Green"/>
         </StackPanel>
-    </Grid>
+        <Canvas Width="900" Background="White">
+            
+        </Canvas>
+    </StackPanel>
 </UserControl>
