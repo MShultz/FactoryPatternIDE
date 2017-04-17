@@ -8,7 +8,9 @@
              d:DesignHeight="800" d:DesignWidth="1200">
     <StackPanel Orientation="Horizontal">
         <StackPanel Width="300" Background="Gray">
-            <ListBox Name="ElementDropDown" Margin="20" Height="760" Background="LightGray"></ListBox>
+            <ListBox x:Name="ElementDropDown" Margin="20" Height="620" Background="LightGray"/>
+            <Button Margin="20, 0, 20, 10" Name="Remove" Height="50" Content="Remove" FontSize="30" VerticalAlignment="Center" Foreground="Red"/>
+            <Button Margin ="20, 10" Name="Compile" Height="50" Content="Compile" FontSize="30" Foreground="Green"/>
         </StackPanel>
         <Canvas Width="900" Background="White">
             
