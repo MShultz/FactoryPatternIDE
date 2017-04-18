@@ -16,7 +16,7 @@ namespace ImplementedUserIDE.Factories
 			switch (outputType.ToLower())
 			{
 				case "html":
-					availableElements = new List<string> { "button", "text", "dropdown" };
+					availableElements = new List<string> { "button", "text", "dropdown", "image"};
 					break;
 				default:
 					throw new ArgumentException("No such output type has been implemented!");
