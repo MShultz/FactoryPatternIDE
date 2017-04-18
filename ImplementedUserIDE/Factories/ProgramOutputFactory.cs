@@ -12,7 +12,7 @@ namespace ImplementedUserIDE.Factories
 	{
 		public override List<string> CreateAvailableElementList(string outputType)
 		{
-			List<string> availableElements = null;
+            List<string> availableElements;
 			switch (outputType.ToLower())
 			{
 				case "html":

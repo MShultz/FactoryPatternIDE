@@ -30,7 +30,7 @@ namespace ImplementedUserIDE
 			mgw.CurrentLanguage = "html";
 			InitializeComponent();
 			this.AddChild(mgw);
-			mgw.RunGUI();
+            // mgw.RunGUI();
 		}
 	}
 }
