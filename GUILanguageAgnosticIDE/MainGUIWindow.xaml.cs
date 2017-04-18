@@ -32,6 +32,7 @@ namespace GUILanguageAgnosticIDE
 				return FileOutputFactory.CreateAvailableElementList(CurrentLanguage);
 			}
 		}
+		public List<AgnosticElement> Elements { get; set; }
 		public OutputFactory FileOutputFactory { get; set; }
 		public MainGUIWindow(OutputFactory outputFactory, List<string> availableLanguages)
         {
@@ -43,7 +44,10 @@ namespace GUILanguageAgnosticIDE
 		public void RunGUI()
 		{
 			Output output = FileOutputFactory.CreateOutput(CurrentLanguage);
-            output.AddElement("image", "https://crouton.net/crouton.png", 100, 100, 100, 100);
+			foreach(Element element in Elements)
+			{
+				output.AddElement(element.GetElementData(), element.Content, element.Top, element.Left, element.Height, element.Width);
+			}
 			output.CompileFile();
 		}
     }

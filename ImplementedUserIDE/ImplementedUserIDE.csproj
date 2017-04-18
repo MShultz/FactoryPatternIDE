@@ -67,8 +67,10 @@
     <Compile Include="Elements\HTMLDropdownElement.cs" />
     <Compile Include="Elements\HTMLImageElement.cs" />
     <Compile Include="Elements\HTMLTextElement.cs" />
+    <Compile Include="Elements\WPFButtonElement.cs" />
     <Compile Include="Factories\HTMLElementFactory.cs" />
     <Compile Include="Factories\ProgramOutputFactory.cs" />
+    <Compile Include="Factories\WPFElementFactory.cs" />
     <Compile Include="Outputs\HTMLOutput.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

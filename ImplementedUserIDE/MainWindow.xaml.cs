@@ -27,6 +27,7 @@ namespace ImplementedUserIDE
 		{
 			ProgramOutputFactory outputFac = new ProgramOutputFactory();
 			mgw = new MainGUIWindow(outputFac, new List<string> { "html" });
+			mgw.CurrentLanguage = "html";
 			InitializeComponent();
 			this.AddChild(mgw);
 			mgw.RunGUI();
