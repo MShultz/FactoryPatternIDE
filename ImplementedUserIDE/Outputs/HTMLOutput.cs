@@ -16,7 +16,7 @@ namespace ImplementedUserIDE
 
 		public HTMLOutput() : base()
 		{
-			availableElements = new List<string> { "button", "text", "dropdown" };
+			availableElements = new List<string> { "button", "text", "dropdown", "image" };
 			Factory = new HTMLElementFactory();
 		}
 
