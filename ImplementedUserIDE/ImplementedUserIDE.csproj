@@ -68,6 +68,7 @@
     <Compile Include="Elements\HTMLImageElement.cs" />
     <Compile Include="Elements\HTMLTextElement.cs" />
 
+
     <Compile Include="Elements\SwingButtonElement.cs" />
     <Compile Include="Elements\SwingTextElement.cs" />
     <Compile Include="Factories\HTMLElementFactory.cs" />
