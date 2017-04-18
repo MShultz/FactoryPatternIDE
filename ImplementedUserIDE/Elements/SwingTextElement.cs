@@ -9,15 +9,17 @@ namespace ImplementedUserIDE.Elements
 {
     class SwingTextElement : Element
     {
+        private static int ElementCounter = 0;
         public SwingTextElement(string content, int top, int left, int height, int width) : base(content, top, left, height, width)
         {
+            ElementCounter++;
         }
 
         public override string GetElementData()
         {
-            return "new JLabel(" + this.Content + ");" + 
-                        "jLabel.setLocation(" + this.Left + "," + this.Top + ");" +
-                        "jLabel.setSize(new Dimension(" + this.Width + "," + this.Height + ");";
+            return string.Format("JLabel jLabel{0} = new JLabel(" + this.Content + ");" + 
+                        "jLabel{0}.setLocation(" + this.Left + "," + this.Top + ");" +
+                        "jLabel{0}.setSize(new Dimension(" + this.Width + "," + this.Height + ");", ElementCounter);
         }
     }
 }

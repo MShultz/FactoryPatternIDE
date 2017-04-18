@@ -9,16 +9,17 @@ namespace ImplementedUserIDE.Elements
 {
     class SwingButtonElement : Element
     {
+        private static int ElementCounter = 0;
         public SwingButtonElement(string content, int top, int left, int height, int width) : base(content, top, left, height, width)
         {
+            ElementCounter++;
         }
 
         public override string GetElementData()
         {
-            return "new JButton(\"" + this.Content + "\");" +
-                   "button.setLocation(" + this.Top + "," + this.Left + ");" +
-                   "button.setPreferredSize(new Dimension(" + this.Width + "," + this.Height + ");";
-
+            return string.Format("JButton button {0} = new JButton(\"" + Content + "\");" +
+                   "button{0}.setLocation(" + Top + "," + Left + ");" +
+                   "button{0}.setPreferredSize(new Dimension(" + Width + "," + Height + ");", ElementCounter);
         }
     }
 }
