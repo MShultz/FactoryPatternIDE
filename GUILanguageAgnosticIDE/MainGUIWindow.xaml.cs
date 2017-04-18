@@ -24,6 +24,7 @@ namespace GUILanguageAgnosticIDE
     {
 		public string CurrentLanguage { get; set; }
 		public List<string> AvailableLanguages { get; set; }
+        public List<Label> ElementsOnPage { get; set;}
 		public List<string> AvailableElements
 		{
 			get
