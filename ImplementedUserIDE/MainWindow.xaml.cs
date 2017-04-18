@@ -29,7 +29,7 @@ namespace ImplementedUserIDE
 			mgw = new MainGUIWindow(outputFac, new List<string> { "html" });
 			InitializeComponent();
 			this.AddChild(mgw);
-			mgw.RunGUI();
+            // mgw.RunGUI();
 		}
 	}
 }

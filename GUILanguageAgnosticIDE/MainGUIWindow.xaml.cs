@@ -24,6 +24,7 @@ namespace GUILanguageAgnosticIDE
     {
 		public string CurrentLanguage { get; set; }
 		public List<string> AvailableLanguages { get; set; }
+        public List<Label> ElementsOnPage { get; set;}
 		public List<string> AvailableElements
 		{
 			get
@@ -31,18 +32,57 @@ namespace GUILanguageAgnosticIDE
 				return FileOutputFactory.CreateAvailableElementList(CurrentLanguage);
 			}
 		}
+		public List<AgnosticElement> Elements { get; set; }
 		public OutputFactory FileOutputFactory { get; set; }
 		public MainGUIWindow(OutputFactory outputFactory, List<string> availableLanguages)
         {
             InitializeComponent();
-			FileOutputFactory = outputFactory;
-			AvailableLanguages = availableLanguages;
+            FileOutputFactory = outputFactory;
+            AvailableLanguages = availableLanguages;
+			CurrentLanguage = AvailableLanguages[0];
+            //for each available element, create a label with the name of the element type.
+            //Add to combo box.
+            //Subscribe each label to the onClick handler.
+            PopulateInfo();
         }
 
-		public void RunGUI()
+        private void PopulateInfo()
+        {
+            ElementDropDown.HorizontalContentAlignment = HorizontalAlignment.Center;
+            foreach (string al in AvailableLanguages)
+            {
+                LangCombo.Items.Add(al);
+            }
+			LangCombo.SelectedItem = LangCombo.Items.GetItemAt(0);
+            foreach (string s in AvailableElements)
+            {
+                Label label = new Label();
+                label.MouseDown += ElementClickHandler;
+                label.Height = 60;
+                label.Margin = new Thickness(5);
+                label.Background = Brushes.DarkGray;
+                label.Content = s;
+                label.HorizontalContentAlignment = HorizontalAlignment.Center;
+                label.VerticalContentAlignment = VerticalAlignment.Center;
+                label.FontSize = 24;
+                label.Width = 240;
+
+                ElementDropDown.Items.Add(label);
+            }
+        }
+
+        private void ElementClickHandler(object sender, MouseButtonEventArgs e)
+        {
+           //((Label)e.Source).
+        }
+
+        public void RunGUI()
 		{
 			Output output = FileOutputFactory.CreateOutput(CurrentLanguage);
-            output.AddElement("image", "https://crouton.net/crouton.png", 100, 100, 100, 100);
+			foreach(Element element in Elements)
+			{
+				output.AddElement(element.GetElementData(), element.Content, element.Top, element.Left, element.Height, element.Width);
+			}
 			output.CompileFile();
 		}
     }
