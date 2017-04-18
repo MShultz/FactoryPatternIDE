@@ -40,20 +40,19 @@ namespace GUILanguageAgnosticIDE
             FileOutputFactory = outputFactory;
             AvailableLanguages = availableLanguages;
 			CurrentLanguage = AvailableLanguages[0];
-            //for each available element, create a label with the name of the element type.
-            //Add to combo box.
-            //Subscribe each label to the onClick handler.
-            PopulateInfo();
+            Setup();
         }
 
-        private void PopulateInfo()
+        private void Setup()
         {
+            GuiCanvas.MouseDown += CanvasClickHandler;
             ElementDropDown.HorizontalContentAlignment = HorizontalAlignment.Center;
-            foreach (string al in AvailableLanguages)
+            ElementDropDown.SelectionChanged += LanguageChangeHandler;
+            foreach (string languages in AvailableLanguages)
             {
-                LangCombo.Items.Add(al);
+                LangCombo.Items.Add(languages);
             }
-			LangCombo.SelectedItem = LangCombo.Items.GetItemAt(0);
+                LangCombo.SelectedItem = LangCombo.Items.GetItemAt(0);
             foreach (string s in AvailableElements)
             {
                 Label label = new Label();
@@ -66,9 +65,19 @@ namespace GUILanguageAgnosticIDE
                 label.VerticalContentAlignment = VerticalAlignment.Center;
                 label.FontSize = 24;
                 label.Width = 240;
-
                 ElementDropDown.Items.Add(label);
             }
+        }
+
+        private void CanvasClickHandler(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void LanguageChangeHandler(object sender, SelectionChangedEventArgs e)
+        {
+            CurrentLanguage = ((string)e.Source);
+            //ElementDropDown.SelectedItem = CurrentLanguage;
         }
 
         private void ElementClickHandler(object sender, MouseButtonEventArgs e)
