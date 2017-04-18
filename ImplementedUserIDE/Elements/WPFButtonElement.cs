@@ -11,7 +11,7 @@ namespace ImplementedUserIDE.Elements
     public class WPFButtonElement : Element
     {
 
-        public WPFButtonElement(string content, int top, int left, int height, int width) : base(content, top, left, height, width) { };
+        public WPFButtonElement(string content, int top, int left, int height, int width) : base(content, top, left, height, width) { }
 
         public override string GetElementData()
         {

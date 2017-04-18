@@ -11,7 +11,7 @@ namespace GUILanguageAgnosticIDE.Models
 		private string ElementType { get; set; }
 		public AgnosticElement(string elementType, string content, int top, int left, int height, int width) : base(content, top, left, height, width)
 		{
-			ElementType = elementType
+			ElementType = elementType;
 		}
 
 		public override string GetElementData()
