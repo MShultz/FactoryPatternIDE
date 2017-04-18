@@ -12,7 +12,7 @@
             <Button Margin="20, 0, 20, 10" Name="Remove" Height="50" Content="Remove" FontSize="30" VerticalAlignment="Center" Foreground="Red"/>
             <Button Margin ="20, 10" Name="Compile" Height="50" Content="Compile" FontSize="30" Foreground="Green"/>
         </StackPanel>
-        <Canvas Width="900" Background="White">
+        <Canvas Name="GuiCanvas" Width="900" Background="White">
             
         </Canvas>
     </StackPanel>
