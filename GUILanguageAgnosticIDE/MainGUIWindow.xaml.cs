@@ -36,10 +36,10 @@ namespace GUILanguageAgnosticIDE
 		public OutputFactory FileOutputFactory { get; set; }
 		public MainGUIWindow(OutputFactory outputFactory, List<string> availableLanguages)
         {
-            CurrentLanguage = "html";
             InitializeComponent();
             FileOutputFactory = outputFactory;
             AvailableLanguages = availableLanguages;
+			CurrentLanguage = AvailableLanguages[0];
             //for each available element, create a label with the name of the element type.
             //Add to combo box.
             //Subscribe each label to the onClick handler.
@@ -48,12 +48,12 @@ namespace GUILanguageAgnosticIDE
 
         private void PopulateInfo()
         {
-            LangCombo.Items.Add("Output Language");
             ElementDropDown.HorizontalContentAlignment = HorizontalAlignment.Center;
             foreach (string al in AvailableLanguages)
             {
                 LangCombo.Items.Add(al);
             }
+			LangCombo.SelectedItem = LangCombo.Items.GetItemAt(0);
             foreach (string s in AvailableElements)
             {
                 Label label = new Label();
