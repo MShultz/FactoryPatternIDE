@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Elements\HTMLButtonElement.cs" />
+    <Compile Include="Elements\HTMLDropdownElement.cs" />
     <Compile Include="Elements\HTMLTextElement.cs" />
     <Compile Include="Factories\HTMLElementFactory.cs" />
     <Compile Include="Factories\ProgramOutputFactory.cs" />

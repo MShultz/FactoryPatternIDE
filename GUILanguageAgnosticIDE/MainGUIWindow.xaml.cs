@@ -32,12 +32,9 @@ namespace GUILanguageAgnosticIDE
 		public void RunGUI(string outputType)
 		{
 			Output output = FileOutputFactory.CreateOutput(outputType);
-
-			//TESTING
-			output.AddElement("button", "Hello!", 50, 50, 100, 300);
-			output.AddElement("text", "This is text!", 100, 100, 40, 250);
-
+            output.AddElement("dropdown", "dog,cat,chimichanga", 100, 100, 100, 100);
 			output.CompileFile();
+
 		}
     }
 }
