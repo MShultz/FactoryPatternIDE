@@ -18,6 +18,9 @@ namespace ImplementedUserIDE.Factories
 				case "html":
 					availableElements = new List<string> { "button", "text", "dropdown", "image"};
 					break;
+				case "swing":
+					availableElements = new List<string> { "button", "text" };
+					break;
 				default:
 					throw new ArgumentException("No such output type has been implemented!");
 			}
