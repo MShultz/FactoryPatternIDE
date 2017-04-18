@@ -26,7 +26,7 @@ namespace ImplementedUserIDE
 		public MainWindow()
 		{
 			ProgramOutputFactory outputFac = new ProgramOutputFactory();
-			mgw = new MainGUIWindow(outputFac, new List<string> { "html" });
+			mgw = new MainGUIWindow(outputFac, new List<string> { "html", "swing" });
 			InitializeComponent();
 			this.AddChild(mgw);
             // mgw.RunGUI();
