@@ -10,6 +10,20 @@ namespace ImplementedUserIDE.Factories
 {
 	public class ProgramOutputFactory : OutputFactory
 	{
+		public override List<string> CreateAvailableElementList(string outputType)
+		{
+			List<string> availableElements = null;
+			switch (outputType.ToLower())
+			{
+				case "html":
+					availableElements = new List<string> { "button", "text", "dropdown" };
+					break;
+				default:
+					throw new ArgumentException("No such output type has been implemented!");
+			}
+			return availableElements;
+		}
+
 		public override Output CreateOutput(string outputType)
 		{
 			Output output = null;

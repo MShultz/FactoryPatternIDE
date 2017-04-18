@@ -11,7 +11,6 @@ namespace GUILanguageAgnosticIDE.Models
 	public abstract class Output
 	{
 		public ElementFactory Factory { get; set; }
-		public static List<string> availableElements;
 		public List<Element> Elements { get; set; }
 		public Output()
 		{

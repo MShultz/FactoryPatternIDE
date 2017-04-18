@@ -22,19 +22,28 @@ namespace GUILanguageAgnosticIDE
     /// </summary>
     public partial class MainGUIWindow : UserControl
     {
+		public string CurrentLanguage { get; set; }
+		public List<string> AvailableLanguages { get; set; }
+		public List<string> AvailableElements
+		{
+			get
+			{
+				return FileOutputFactory.CreateAvailableElementList(CurrentLanguage);
+			}
+		}
 		public OutputFactory FileOutputFactory { get; set; }
-		public MainGUIWindow(OutputFactory outputFactory)
+		public MainGUIWindow(OutputFactory outputFactory, List<string> availableLanguages)
         {
             InitializeComponent();
 			FileOutputFactory = outputFactory;
+			AvailableLanguages = availableLanguages;
         }
 
-		public void RunGUI(string outputType)
+		public void RunGUI()
 		{
-			Output output = FileOutputFactory.CreateOutput(outputType);
+			Output output = FileOutputFactory.CreateOutput(CurrentLanguage);
             output.AddElement("dropdown", "dog,cat,chimichanga", 100, 100, 100, 100);
 			output.CompileFile();
-
 		}
     }
 }

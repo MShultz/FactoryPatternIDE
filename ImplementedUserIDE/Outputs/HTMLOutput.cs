@@ -16,14 +16,12 @@ namespace ImplementedUserIDE
 
 		public HTMLOutput() : base()
 		{
-			availableElements = new List<string> { "button", "text", "dropdown" };
 			Factory = new HTMLElementFactory();
 		}
 
 		public override void AddElement(string elementType, string content, int top, int left, int height, int width)
 		{
-					Elements.Add(Factory.CreateElement(elementType, content, top, left, height, width));
-			
+			Elements.Add(Factory.CreateElement(elementType, content, top, left, height, width));
 		}
 
 		public override void CompileFile()

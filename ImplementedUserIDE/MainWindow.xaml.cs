@@ -26,10 +26,10 @@ namespace ImplementedUserIDE
 		public MainWindow()
 		{
 			ProgramOutputFactory outputFac = new ProgramOutputFactory();
-			mgw = new MainGUIWindow(outputFac);
+			mgw = new MainGUIWindow(outputFac, new List<string> { "html" });
 			InitializeComponent();
 			this.AddChild(mgw);
-			mgw.RunGUI("html");
+			mgw.RunGUI();
 		}
 	}
 }
