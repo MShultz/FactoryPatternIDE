@@ -42,7 +42,7 @@ namespace GUILanguageAgnosticIDE
 		public void RunGUI()
 		{
 			Output output = FileOutputFactory.CreateOutput(CurrentLanguage);
-            output.AddElement("dropdown", "dog,cat,chimichanga", 100, 100, 100, 100);
+            output.AddElement("image", "https://crouton.net/crouton.png", 100, 100, 100, 100);
 			output.CompileFile();
 		}
     }

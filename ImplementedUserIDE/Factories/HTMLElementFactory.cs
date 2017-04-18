@@ -25,6 +25,9 @@ namespace ImplementedUserIDE.Factories
                 case "dropdown":
                     element = new HTMLDropdownElement(content, top, left, height, width);
                     break;
+                case "image":
+                    element = new HTMLImageElement(content, top, left, height, width);
+                    break;
 				default:
 					throw new ArgumentException("Element type unknown!");
 			}
