@@ -48,10 +48,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Dialogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainGUIWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Dialogue.xaml.cs">
+      <DependentUpon>Dialogue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Factories\ElementFactory.cs" />
     <Compile Include="Factories\OutputFactory.cs" />
     <Compile Include="MainGUIWindow.xaml.cs">
