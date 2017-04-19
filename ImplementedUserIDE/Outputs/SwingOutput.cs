@@ -54,9 +54,8 @@ namespace ImplementedUserIDE.Outputs
                 sw.Write(fileContent);
             }
 
-            Process.Start("javac", Path.GetFullPath("Main.java"));
-            //String fileToRun = "java " + Path.GetFullPath("Main.java").Replace(".java", "");
-            Process.Start("java", Path.GetFullPath("Main.java").Replace(".java", ""));
+            Process.Start("javac", "Main.java");
+            Process.Start("java", "Main");
         }
 
     }
