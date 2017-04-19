@@ -27,14 +27,22 @@ namespace ImplementedUserIDE.Outputs
                                  "import javax.swing.JButton;" +
                                  "import javax.swing.JFrame;" +
                                  "import javax.swing.JLabel;" +
-                                 "public class Main { " +
+								 "import javax.swing.JPanel;" +
+								 "public class Main { " +
                                  "public static void main(String[] args){" +
                                  "JFrame frame = new JFrame();" +
                                  "frame.setLocationRelativeTo(null);" +
                                  "frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);" +
-                                 "frame.setSize(500, 500);";
+                                 "frame.setSize(900, 800);" +
+								"JPanel contentPane = new JPanel();" +
+								"contentPane.setOpaque(true);" +
+								"contentPane.setLayout(null);" +
+								"frame.setContentPane(contentPane);" +
+								"frame.setSize(900, 800);" +
+								"frame.setLocationByPlatform(true);" +
+								"frame.setVisible(true);";
 
-            foreach (Element e in Elements)
+			foreach (Element e in Elements)
             {
                 fileContent += e.GetElementData();
             }
@@ -47,8 +55,8 @@ namespace ImplementedUserIDE.Outputs
             }
 
             Process.Start("javac", Path.GetFullPath("Main.java"));
-            String fileToRun = "java " + Path.GetFullPath("Main.java").Replace(".java", "");
-          //  Process.Start(fileToRun);
+            //String fileToRun = "java " + Path.GetFullPath("Main.java").Replace(".java", "");
+            Process.Start("java", Path.GetFullPath("Main.java").Replace(".java", ""));
         }
 
     }

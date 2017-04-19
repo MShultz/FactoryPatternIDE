@@ -19,7 +19,7 @@ namespace ImplementedUserIDE.Elements
 
         public override string GetElementData()
         {
-            return string.Format("JLabel jLabel{0} = new JLabel(\"" + this.Content + "\");" + 
+            return string.Format("JLabel jLabel{0} = new JLabel(\"" + this.Content + "\", JLabel.CENTER);" + 
                         "jLabel{0}.setLocation(" + this.Left + "," + this.Top + ");" +
                         "jLabel{0}.setSize(new Dimension(" + this.Width + "," + this.Height + "));" +
                          "frame.getContentPane().add(jLabel{0});", ID);

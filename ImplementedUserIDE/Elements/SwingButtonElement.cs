@@ -20,8 +20,8 @@ namespace ImplementedUserIDE.Elements
         public override string GetElementData()
         {
             return string.Format("JButton button{0} = new JButton(\"" + Content + "\");" +
-                   "button{0}.setLocation(" + Top + "," + Left + ");" +
-                   "button{0}.setPreferredSize(new Dimension(" + Width + "," + Height + "));" +
+                   "button{0}.setLocation(" + Left + "," + Top + ");" +
+                   "button{0}.setSize(new Dimension(" + Width + "," + Height + "));" +
                     "frame.getContentPane().add(button{0});", ID);
         }
     }
