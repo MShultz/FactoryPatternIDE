@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ImplementedUserIDE.Outputs
@@ -54,7 +55,13 @@ namespace ImplementedUserIDE.Outputs
                 sw.Write(fileContent);
             }
 
+			if (File.Exists(Path.GetFullPath("Main.class")))
+			{
+				File.Delete(Path.GetFullPath("Main.class"));
+			}
+
             Process.Start("javac", "Main.java");
+			Thread.Sleep(1000);
             Process.Start("java", "Main");
         }
 
