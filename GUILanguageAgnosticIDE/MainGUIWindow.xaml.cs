@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -71,7 +72,8 @@ namespace GUILanguageAgnosticIDE
 
         private void CreateLablesForLanguage()
         {
-            foreach (string s in AvailableElements)
+			ElementListView.Items.Clear();
+			foreach (string s in AvailableElements)
             {
                 Label label = new Label();
                 label.MouseLeftButtonDown += ElementClickHandler;
@@ -92,13 +94,15 @@ namespace GUILanguageAgnosticIDE
             Dialogue dialoguePrompt = new Dialogue();
             double mouseX = e.GetPosition(GuiCanvas).X;
             double mouseY = e.GetPosition(GuiCanvas).Y;
-            if (dialoguePrompt.ShowDialog() == true)
+			dialoguePrompt.Left = mouseX + 300;
+			dialoguePrompt.Top = mouseY;
+            if (dialoguePrompt.ShowDialog().Value)
             {
                 Label canvasLabel = new Label();
                 canvasLabel.Name = SelectedElement + ElementCounter++ + "";
                 canvasLabel.Content = dialoguePrompt.ResponseText;
-                canvasLabel.Height = dialoguePrompt.HeightText;
-                canvasLabel.Width = dialoguePrompt.WidthText;
+                canvasLabel.Height = int.Parse(dialoguePrompt.HeightText);
+                canvasLabel.Width = int.Parse(dialoguePrompt.WidthText);
                 canvasLabel.Background = Brushes.LightGray;
                 canvasLabel.BorderThickness = new Thickness(2);
                 canvasLabel.BorderBrush = Brushes.Black;
@@ -116,22 +120,51 @@ namespace GUILanguageAgnosticIDE
 
         private void LanguageChangeHandler(object sender, SelectionChangedEventArgs e)
         {
+			string oldLanguage = CurrentLanguage;
             CurrentLanguage = LangCombo.SelectedItem.ToString();
-            FileOutputFactory.CreateAvailableElementList(CurrentLanguage);
-            ElementListView.Items.Clear();
+            
             CreateLablesForLanguage();
+			List<string> elementTypesToRemove = new List<string>();
+
             for (int i = 0; i < Elements.Count; i++)
             {
-                if (!AvailableElements.Contains(Elements[i].GetElementData()))
+				string elementType = Elements[i].GetElementData();
+				if (!AvailableElements.Contains(elementType) && !elementTypesToRemove.Contains(elementType))
                 {
-                    //wonky, change if you're not lazy.
-                    MessageBox.Show("Will remove all instances of the element of type \"" + Elements[i].GetElementData() + "\"");
-                    GuiCanvas.Children.Remove(ElementsOnPage[i]);
-                    Elements.RemoveAt(i);
-                    ElementsOnPage.RemoveAt(i);
+					elementTypesToRemove.Add(elementType);
                 }
             }
-        }
+
+			if(elementTypesToRemove.Count > 0)
+			{
+				MessageBoxResult result = MessageBox.Show("This will remove all unsupported elements from your GUI. Proceed?", "Warning!", MessageBoxButton.YesNo);
+				if(result == MessageBoxResult.Yes)
+				{
+					for (int i = 0; i < elementTypesToRemove.Count; i++)
+					{
+						Elements.RemoveAll(x => x.GetElementData().Equals(elementTypesToRemove[i]));
+						Regex rgx = new Regex(@"\d+$");//Removes ID at end of Name
+						ElementsOnPage.RemoveAll(x => rgx.Replace(x.Name, "").Equals(elementTypesToRemove[i]));
+						for(int j = 0; j < GuiCanvas.Children.Count; j++)
+						{
+							if(rgx.Replace(((Label)GuiCanvas.Children[j]).Name, "").Equals(elementTypesToRemove[j]))
+							{
+								GuiCanvas.Children.RemoveAt(j);
+								j--;
+							}
+						}
+					}
+				}
+				else
+				{
+					CurrentLanguage = oldLanguage;
+					LangCombo.SelectedItem = LangCombo.Items.GetItemAt(LangCombo.Items.IndexOf(oldLanguage));
+					CreateLablesForLanguage();
+				}
+				
+			}
+			
+		}
 
         private void ElementClickHandler(object sender, RoutedEventArgs e)
         {

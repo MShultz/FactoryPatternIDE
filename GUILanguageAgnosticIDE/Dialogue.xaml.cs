@@ -21,28 +21,43 @@ namespace GUILanguageAgnosticIDE
     {
         public Dialogue()
         {
-            InitializeComponent();
-        }
+			InitializeComponent();
+			ResponseTextBox.GotFocus += TextBox_OnFocused;
+			HeightTextBox.GotFocus += TextBox_OnFocused;
+			WidthTextBox.GotFocus += TextBox_OnFocused;
+		}
 
         public string ResponseText
         {
             get { return ResponseTextBox.Text; }
             set { ResponseTextBox.Text = value; }
         }
-        public int HeightText
+        public string HeightText
         {
-            get { return int.Parse(HeightTextBox.Text); }
-            set { HeightTextBox.Text = value + ""; }
+            get { return HeightTextBox.Text; }
+            set { HeightTextBox.Text = value; }
         }
-        public int WidthText
+        public string WidthText
         {
-            get { return int.Parse(WidthTextBox.Text); }
-            set { WidthTextBox.Text = value + ""; }
+            get { return WidthTextBox.Text; }
+            set { WidthTextBox.Text = value; }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+			int isNumeric = 0;
+			DialogResult = int.TryParse(HeightText, out isNumeric) && int.TryParse(WidthText, out isNumeric);
+			if (!DialogResult.Value)
+			{
+				MessageBox.Show("Dimensions are invalid!");
+			}
         }
+
+		private void TextBox_OnFocused(object sender, RoutedEventArgs e)
+		{
+			TextBox box = (TextBox)e.Source;
+			box.Text = string.Empty;
+			box.GotFocus -= TextBox_OnFocused;
+		}
     }
 }

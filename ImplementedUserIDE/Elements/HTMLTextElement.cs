@@ -15,7 +15,7 @@ namespace ImplementedUserIDE.Elements
 
 		public override string GetElementData()
 		{
-			return "<div style=\"position:absolute;left:" + this.Left + ";top:" + this.Top + "width:" + this.Width + ";height:" + this.Height + "\"><p>" + this.Content + "</p></div>";
+			return "<div style=\"position:absolute;left:" + this.Left + "px;top:" + this.Top + "px;width:" + this.Width + "px;height:" + this.Height + "px\"><p>" + this.Content + "</p></div>";
 		}
 	}
 }
