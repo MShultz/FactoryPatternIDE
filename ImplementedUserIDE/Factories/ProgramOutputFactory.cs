@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GUILanguageAgnosticIDE.Models;
+using ImplementedUserIDE.Outputs;
 
 namespace ImplementedUserIDE.Factories
 {
@@ -35,6 +36,9 @@ namespace ImplementedUserIDE.Factories
 				case "html":
 					output = new HTMLOutput();
 					break;
+                case "swing":
+                    output = new SwingOutput();
+                    break;
 				default:
 					throw new ArgumentException("No such output type has been implemented!");
 			}

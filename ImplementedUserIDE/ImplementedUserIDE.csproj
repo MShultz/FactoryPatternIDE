@@ -67,14 +67,11 @@
     <Compile Include="Elements\HTMLDropdownElement.cs" />
     <Compile Include="Elements\HTMLImageElement.cs" />
     <Compile Include="Elements\HTMLTextElement.cs" />
-
-
     <Compile Include="Elements\SwingButtonElement.cs" />
     <Compile Include="Elements\SwingTextElement.cs" />
     <Compile Include="Factories\HTMLElementFactory.cs" />
     <Compile Include="Factories\ProgramOutputFactory.cs" />
     <Compile Include="Factories\SwingElementFactory.cs" />
-
     <Compile Include="Outputs\HTMLOutput.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -82,6 +79,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Outputs\SwingOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
